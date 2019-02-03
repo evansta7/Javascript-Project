@@ -1,0 +1,18 @@
+
+<script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("user_pAwtXLLoDHVvXZbvdGBfg");
+   })();
+</script>
+<script>
+
+var service_id = 'gmail';
+var template_id = 'template_ZvpCoZra';
+var template_params = {
+	from_name : 'Elizabeth',
+	message_html : 'This is awesome!'
+};
+
+emailjs.send(service_id,template_id,template_params);
+</script>
