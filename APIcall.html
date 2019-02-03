@@ -1,0 +1,39 @@
+
+<input list="currencies">
+
+<datalist id="currencies">
+</datalist>
+
+<script language="javascript">
+
+var currencies = [];
+var str = '';
+var currencyOne, currencyTwo;
+let url = 'https://forex.1forge.com/1.0.3/symbols?api_key=Fdat4jKBf8dPXfCQN7egeyeSFJxWS3P2';
+
+fetch(url)
+.then(res => res.json())
+.then((out) => {
+for(i = 0; i < 5; i++){
+currencies.push(out[i]);
+}
+var list = [];
+for(i = 0; i < 5; i++){
+	currencyOne = currencies[i].substr(0,3);
+	currencyTwo = currencies[i].substr(3,3);
+
+fetch('https://forex.1forge.com/1.0.3/convert?from='+currencyOne+'&to='+currencyTwo+'&quantity=100&api_key=Fdat4jKBf8dPXfCQN7egeyeSFJxWS3P2')
+.then(res => res.json())
+.then((result) => {
+	str += '<option value="'+result["text"]+'" />'; 
+
+	var myList = document.getElementById("currencies");
+	myList.innerHTML = str;
+})
+
+
+}
+
+})
+
+</script>
